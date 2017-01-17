@@ -13,7 +13,6 @@ var Main = React.createClass({
 //get any database info when loading
   componentWillMount: function() {
     helpers.getSavedFromDB().then(function(data){
-      console.log(data, "data");
       this.setState({ saved: data });
     }.bind(this));
     
