@@ -26,7 +26,6 @@ var Main = React.createClass({
       oldState.push({title:obj.headline.main, date:obj.pub_date,url:obj.web_url});
       this.setState({saved:oldState});
     }
-    
   },
   //delete a saved article
   deleteArticle: function(obj){
@@ -51,10 +50,10 @@ var Main = React.createClass({
         <div className="row">
 
           <div className="jumbotron">
-            <h1>New York Times Article Scrubber</h1>
-            <p><em>Find the best NYT Articles here!</em></p>
-            <a className="btn btn-default" href="#/search">Search for articles</a>
-            <a className="btn btn-default" href="#/saved">Go to saved articles</a>
+            <h1>New York Times Article Search</h1>
+            <p><em>Find and save your favorite NYT Articles here!</em></p>
+            <a className="btn btn-success" href="#/search">Search for articles</a>
+            <a className="btn btn-success" href="#/saved">Go to saved articles</a>
           </div>
           <div className="container">
 
