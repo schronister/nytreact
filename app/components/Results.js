@@ -19,7 +19,7 @@ var Results = React.createClass({
           {
             this.props.results.map(function(obj, i){
             return <div key={i} id={i}><p key={obj.headline.main}><a target='_blank' href={obj.web_url}><em>{obj.headline.main}</em></a> - {moment(obj.pub_date).format("MMMM Do, YYYY")}
-            <button style={padleft} id={i} onClick={()=>this.props.save(obj)}>Save Article</button></p></div>
+            <button className="btn btn-success" style={padleft} id={i} onClick={()=>this.props.save(obj)}>Save</button></p></div>
            }.bind(this))
           }
         </div>
