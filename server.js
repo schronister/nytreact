@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({
 app.use(express.static("public"));
 
 // Database configuration with mongoose
-mongoose.connect("mongodb://localhost/nytreact");
+mongoose.connect("mongodb://heroku_8fg9ljnm:pr5mnkpqblpsjtppo8so6to5qg@ds111589.mlab.com:11589/heroku_8fg9ljnm");
 var db = mongoose.connection;
 
 // Show any mongoose errors
