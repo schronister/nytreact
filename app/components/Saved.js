@@ -20,9 +20,8 @@ var Saved = React.createClass({
               <div className="panel-body">
                 {
                   this.props.savedArticles.map(function(obj, i){
-                    console.log(obj);
                   return <div key={i} id={i}><p key={obj.title}><em>{obj.title}</em> - {moment(obj.date).format("MMMM Do, YYYY")} - <a href={obj.url}>Link  </a>
-                  <button id={i} onClick={()=>this.props.save(obj)}>Delete</button></p></div>
+                  <button id={i} onClick={()=>this.props.delete(obj)}>Delete</button></p></div>
                  }.bind(this))
                 }
               </div>

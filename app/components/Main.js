@@ -12,7 +12,7 @@ var Main = React.createClass({
   },
 //get any database info when loading
   componentWillMount: function() {
-    helpers.searchTermsFromDB().then(function(data){
+    helpers.getSavedFromDB().then(function(data){
       console.log(data, "data");
       this.setState({ saved: data });
     }.bind(this));
@@ -21,7 +21,6 @@ var Main = React.createClass({
 
 //save an article to the database
   saveArticle: function(obj){
-    console.log(obj);
     helpers.saveToDB(obj.headline.main, obj.pub_date, obj.web_url);
     if (this.state.saved){
       var oldState = this.state.saved;
@@ -29,6 +28,19 @@ var Main = React.createClass({
       this.setState({saved:oldState});
     }
     
+  },
+  //delete a saved article
+  deleteArticle: function(obj){
+    helpers.deleteFromDB(obj.title);
+
+    //remove it from state as well
+    var oldState = this.state.saved;
+    for (var i = 0; i < oldState.length; i++){
+      if (oldState[i].title === obj.title){
+        oldState.splice(i, 1);
+      }
+    }
+    this.setState({saved:oldState});
   },
 
   // Here we render the component
@@ -48,7 +60,7 @@ var Main = React.createClass({
           <div className="container">
 
             {/* Added this.props.children to dump all of the child components into place */}
-            {this.props.children && React.cloneElement(this.props.children, {save:this.saveArticle, savedArticles:this.state.saved})}
+            {this.props.children && React.cloneElement(this.props.children, {save:this.saveArticle, savedArticles:this.state.saved, delete:this.deleteArticle})}
 
           </div>
         </div>

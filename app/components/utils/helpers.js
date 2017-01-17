@@ -11,7 +11,6 @@ var queryURLBase = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api
 var helpers = {
 
   runQuery: function(query) {
-    console.log(query);
     //NYT api search
     var queryURL = queryURLBase + query.topic + "&begin_date=" + query.startYear + "0101&end_date=" + query.endYear + "0101";
     return axios.get(queryURL).then(function(response) {
@@ -23,19 +22,28 @@ var helpers = {
 
   //save an article to the database
   saveToDB: function(title, date, url) {
-    console.log("inside the savetoDB function");
-    console.log("title", title, "date", date, "url", url);
     return axios.post("/api/saved", querystring.stringify({title: title, date:date, url:url}))
     .then(function(response) {
         console.log("Successfully saved article");
     });
   },
 
-  searchTermsFromDB: function() {
+  getSavedFromDB: function() {
     return axios.get("/api/saved")
     .then(function(response) {
-      console.log(response);
       return response.data;
+    });
+  },
+
+  deleteFromDB: function(title){
+    return axios({
+      method: 'post',
+      url: "/api/saved/delete",
+      data: querystring.stringify({
+        title:title
+      })
+    }).then(function(response){
+      console.log("Deleted article");
     });
   }
 

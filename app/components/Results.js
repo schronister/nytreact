@@ -17,9 +17,8 @@ var Results = React.createClass({
         <div className="panel-body text-center">
           {
             this.props.results.map(function(obj, i){
-              console.log(obj);
-            return <div key={i} id={i}><p key={obj.headline.main}><em>{obj.headline.main}</em> - {moment(obj.pub_date).format("MMMM Do, YYYY")} - <a href={obj.web_url}>Link</a></p>
-            <button id={i} onClick={()=>this.props.save(obj)}>Save</button></div>
+            return <div key={i} id={i}><p key={obj.headline.main}><em>{obj.headline.main}</em> - {moment(obj.pub_date).format("MMMM Do, YYYY")} - <a href={obj.web_url}>Link  </a>
+            <button id={i} onClick={()=>this.props.save(obj)}>Save Article</button></p></div>
            }.bind(this))
           }
         </div>

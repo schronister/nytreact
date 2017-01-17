@@ -45,8 +45,6 @@ app.get("/api/saved", function(req, res) {
 
 //save a new article route
 app.post("/api/saved", function(req, res) {
-  console.log("hit the post route");
-  console.log(req);
   var newArticle = new Article({title: req.body.title, date: req.body.date, url:req.body.url});
   newArticle.save(function(err, doc){
     if (err) throw err;
@@ -55,8 +53,9 @@ app.post("/api/saved", function(req, res) {
 });
 
 //delete an article
-app.delete("/api/saved", function(req, res) {
-  Article.find({_id:req.body.id}).remove().exec();
+app.post("/api/saved/delete", function(req, res) {
+  Article.remove({title:req.body.title}, function(data){
+  });
 });
 
 
