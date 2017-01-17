@@ -52,7 +52,7 @@ app.post("/api/saved", function(req, res) {
   })
 });
 
-//delete an article
+//delete an article by matching title
 app.post("/api/saved/delete", function(req, res) {
   Article.remove({title:req.body.title}, function(data){
   });

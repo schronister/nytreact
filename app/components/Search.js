@@ -11,25 +11,28 @@ var Search = React.createClass({
             results:[],
             query:""}
   },
-
+  //setting the query for NYT search
   setQuery: function(query) {
     this.setState({ query: query });
   },
-
+  //handling the submission of the search form
   handleSubmit: function(event){
     event.preventDefault();
 
     this.setQuery({topic:this.state.topic, startYear: this.state.startYear, endYear:this.state.endYear});
 
   },
+  //when query is updated, perform the search
    componentDidUpdate: function(prevProps, prevState){
     if (prevState.query != this.state.query){
       helpers.runQuery(this.state.query).then(function(data){
+        //trim to top 5 results
+        data.length = 5;
         this.setState({results: data});
       }.bind(this))
     }
   },
-
+  //keep the state in sync with the form
   handleChange: function(event){
     var newState = {};
     newState[event.target.id] = event.target.value;
@@ -48,11 +51,6 @@ var Search = React.createClass({
         <div className="panel-body text-center">
           <form onSubmit={this.handleSubmit}>
             <div className="form-group">
-              {/*
-                Note how each of the form elements has an id that matches the state.
-                This is not necessary but it is convenient.
-                Also note how each has an onChange event associated with our handleChange event.
-              */}
               <h3>Search Term</h3>
               <input
                 value={this.state.topic}

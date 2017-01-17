@@ -1,7 +1,7 @@
 // Include React
 var React = require("react");
 
-// Helper Function
+// Helper Functions
 var helpers = require("./utils/helpers.js");
 
 var Main = React.createClass({
@@ -59,7 +59,7 @@ var Main = React.createClass({
           </div>
           <div className="container">
 
-            {/* Added this.props.children to dump all of the child components into place */}
+            {/*Used cloneElement to send the state info into props for the child components*/}
             {this.props.children && React.cloneElement(this.props.children, {save:this.saveArticle, savedArticles:this.state.saved, delete:this.deleteArticle})}
 
           </div>

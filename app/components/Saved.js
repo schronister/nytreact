@@ -15,9 +15,9 @@ var Saved = React.createClass({
 
             <div className="panel panel-default">
               <div className="panel-heading">
-                <h3 className="panel-title">Saved Articles</h3>
+                <h3 className="panel-title text-center">Saved Articles</h3>
               </div>
-              <div className="panel-body">
+              <div className="panel-body text-center">
                 {
                   this.props.savedArticles.map(function(obj, i){
                   return <div key={i} id={i}><p key={obj.title}><em>{obj.title}</em> - {moment(obj.date).format("MMMM Do, YYYY")} - <a href={obj.url}>Link  </a>
