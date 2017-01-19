@@ -1,6 +1,7 @@
 // Include React
 var React = require("react");
 var moment = require("moment");
+var padleft = {marginLeft:"10px"}
 
 var Saved = React.createClass({
   // Here we render the component
@@ -20,8 +21,8 @@ var Saved = React.createClass({
               <div className="panel-body text-center">
                 {
                   this.props.savedArticles.map(function(obj, i){
-                  return <div key={i} id={i}><p key={obj.title}><em>{obj.title}</em> - {moment(obj.date).format("MMMM Do, YYYY")} - <a href={obj.url}>Link  </a>
-                  <button id={i} onClick={()=>this.props.delete(obj)}>Delete</button></p></div>
+                  return <div key={i} id={i}><p key={obj.title}><a target='_blank' href={obj.url}><em>{obj.title}</em></a> - {moment(obj.date).format("MMMM Do, YYYY")}
+                  <button style={padleft} className='btn btn-danger' id={i} onClick={()=>this.props.delete(obj)}>Delete</button></p></div>
                  }.bind(this))
                 }
               </div>

@@ -2,6 +2,7 @@
 var React = require("react");
 var Results = require("./Results");
 var helpers = require("./utils/helpers.js");
+var regWidth = {width:300, textAlign:'center', margin:'0px auto'};
 
 var Search = React.createClass({
   getInitialState: function(){
@@ -49,42 +50,57 @@ var Search = React.createClass({
           <h3 className="panel-title text-center">Search</h3>
         </div>
         <div className="panel-body text-center">
-          <form onSubmit={this.handleSubmit}>
+          <form className="form-horizontal" onSubmit={this.handleSubmit}>
             <div className="form-group">
-              <h3>Search Term</h3>
+              <div className="row">
+              <label htmlFor="topic" className="col-sm-2 control-label">Topic</label>
+              <div className="col-sm-9">
               <input
                 value={this.state.topic}
                 type="text"
-                className="form-control text-center"
+                className="form-control"
                 id="topic"
                 onChange={this.handleChange}
                 required
               />
-              <h3>Start Year</h3>
+              </div>
+              </div>
+              <div className="row">
+              <label htmlFor="startYear" className="col-sm-2 control-label">Starting Year</label>
+              <div className="col-sm-9">
               <input
                 value={this.state.startYear}
                 type="number"
-                className="form-control text-center"
+                className="form-control"
                 id="startYear"
                 onChange={this.handleChange}
                 required
               />
-              <h3>End Year</h3>
+              </div>
+              </div>
+              <div className="row">
+              <label htmlFor="endYear" className="col-sm-2 control-label">Ending Year</label>
+              <div className="col-sm-9">
               <input
                 value={this.state.endYear}
                 type="number"
-                className="form-control text-center"
+                className="form-control"
                 id="endYear"
                 onChange={this.handleChange}
                 required
               />
+              </div>
+              </div>
               <br />
-              <button
-                className="btn btn-primary"
+              <br />
+              <div className="row">
+              <button style={regWidth}
+                className="btn btn-primary btn-big btn-block"
                 type="submit"
               >
                 Search
               </button>
+            </div>
             </div>
           </form>
         </div>
